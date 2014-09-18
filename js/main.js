@@ -11,24 +11,18 @@ profile.Profile = function(data){
 //Controller
 profile.controller = function(){
 
-	//Issues with CORS/Access-Control so I used another method so that I could test this at least
-	/*var query = 'https://osf.io/api/v1/profile/e2c9k/'
-	var queryUrl = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22' + encodeURIComponent(query) + '%22&format=json&callback=?'
+	this.name = m.request({method: "GET", url: "/json/e2c9k.json"}).then(function(list){
+		return list.profile.fullname;
+	});
 
-	$.getJSON(queryUrl, function (res) {
-	    console.log(res);
-	    console.log(res.query.results.json.profile.fullname);
-	    console.log(res.query.results.json.profile.display_absolute_url);
-	});*/
-	/*m.request({method: "POST", url:queryUrl, config: publicAPI}).then(test);
-	console.log(test);*/
+	this.about = m.request({method: "GET", url: "/json/e2c9k.json"}).then(function(list){
+		return list.profile.absolute_url;
+	});
+	this.twitter = m.request({method: "GET", url: "/json/e2c9k.json"}).then(function(list){
+		return list.profile.gravatar_url;
+	});
 
-	this.name = m.prop("");
-	this.about = m.prop("");
-	this.twitter = m.prop("");
-
-	var test = m.prop([]);
-	var publicAPI = function(xhr) {xhr.responseText}
+	//console.log(name());
 }
 
 //View
@@ -38,24 +32,25 @@ profile.view = function(ctrl){
 				m("td", [
 					m("#name", "Name: ")
 				]),
-				//m("td", {value: ctrl.name()}),
-				m("td", "Faye Huynh"),
+				m("td", ctrl.name()),
+				//m("td", "Faye Huynh"),
 			]),
 
 			m("tr", [
 				m("td", [
 					m("#about", "About: ")
 				]),
-				//m("td", {value: ctrl.about()}),
-				m("td", "About me!"),
+
+				m("td", "This is the link to my OSF page (" + ctrl.about() + ")"),
+				//m("td", "About me!"),
 			]),
 
 			m("tr", [
 				m("td", [
 					m("#twitter", "Twitter: ")
 				]),
-				//m("td", {value: ctrl.twitter()}),
-				m("td", "TwitterName"),
+				m("td", "This is the link to my gravatar (" + ctrl.twitter() + ")"),
+				//m("td", "TwitterName"),
 			])
 		]);
 };

@@ -1,0 +1,26 @@
+{
+    "profile": {
+        "surname": "Sinclair",
+        "merged_by": null,
+        "url": "/e2c9k/",
+        "absolute_url": "https://osf.io/e2c9k/",
+        "registered": true,
+        "number_public_projects": 2,
+        "id": "e2c9k",
+        "date_registered": "2013-07-01",
+        "display_absolute_url": "osf.io/e2c9k",
+        "activity_points": 27,
+        "number_projects": 2,
+        "active": true,
+        "fullname": "H. Colleen Sinclair",
+        "is_merged": false,
+        "gravatar_url": "https://secure.gravatar.com/avatar/43d71331f4f16f19acfac918a42ac3ff?d=identicon&size=70"
+    },
+    "assertions": [],
+    "badges": [],
+    "user": {
+        "is_profile": false,
+        "can_edit": null,
+        "permissions": []
+    }
+}
